@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+set -o pipefail
+case "$1" in
+	configure) 
+		su "$(users)" -c '$HOME/.local/bin/pip install --user --upgrade pynput'
+		su "$(users)" -c '$HOME/.local/bin/pip install --user --upgrade inputs';;
+	abort-upgrade|abort-deconfigure|abort-remove) ;;
+	*) echo -e "\nERROR: CALLED WITH UNKNOWN ARGUMENT $1\n"; exit 2 ;;
+esac
+	

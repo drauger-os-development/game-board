@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=game-board
+Version=1.0
+Exec=/usr/bin/game-board -I
+Icon="PLACEHOLDER"
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Accessibility;GTK;Utility;

@@ -1,0 +1,33 @@
+#!/bin/bash
+# -*- coding: utf-8 -*-
+#
+#  game-board
+#  
+#  Copyright 2019 Thomas Castleman <contact@draugeros.org>
+#  
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
+#
+VERSION="0.0.1-alpha1"
+if [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
+	echo -e "\ngame-board version $VERSION\n"
+	exit 0
+elif [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+	echo -e "\ngame-board version $VERSION\n\ngame-board is an on-screen keyboard interface\nfor Xbox and PlayStation controllers.\n\ngame-board uses the direction the analoge sticks are pointing\nin order to figure out which letter, number, or special character you want\nthen inputs it when the correct button is pressed\n\n-b, --background\t Start game-board in the background\n-h, --help\t Print this Help Message and Exit\n-I, --Interface\t Show the graphical interface\n-v, --version\t Print Version and Exit\n"
+	exit 0
+elif [ "$1" == "-I" ] || [ "$1" == "--Interface" ] || [ "$1" == "--interface" ]; then
+	echo "NO INTERFACE DEFINED YET"
+	exit 2
+fi

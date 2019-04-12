@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+set -o pipefail
+if [ "$1" == "remove" ] || [ "$1" == "purge" ]; then
+	su "$(users)" -c '$HOME/.local/bin/pip uninstall -y pynput'
+	su "$(users)" -c '$HOME/.local/bin/pip uninstall -y inputs'
+fi
