@@ -20,15 +20,17 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #  
-#  
+#
+#import all necessary modules
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
-from multiprocessing import Process,Queue,Pipe
-from /usr/share/game-board/engine/translate-left.py import convert_left
-from /usr/share/game-board/engine/translate-right.py import convert_right
+from gi.repository import Gtk, Gdk, GdkPixbuf
 from os import system
+import sys
+import subprocess
+import psutil
 
+#create process name
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
 	libc = cdll.LoadLibrary('libc.so.6')    #Loading a 3rd party library C
@@ -36,69 +38,127 @@ def set_procname(newname):
 	buff.value = newname                 #Null terminated string as it should be
 	libc.prctl(15, byref(buff), 0, 0, 0) #Refer to "#define" of "/usr/include/linux/prctl.h" for the misterious value 16 & arg[3..5] are zero as the man page says.
 
-set_procname("game-board-gui")
+set_procname("gb-gui")
+
+def check_proc_running(processName):
+	#Check if there is any running process that contains the given name processName.
+    #Iterate over the all the running process
+	for proc in psutil.process_iter():
+		try:
+			# Check if process name contains the given name string.
+			if processName.lower() in proc.name().lower():
+				return True
+		except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+			pass
+	return False
+
+def check():
+	if not check_proc_running("gb-engine"):
+		subprocess.Popen(['/home/batcastle/Dropbox/GitHub/game-board/usr/share/game-board/ui/error_enr.py'])
+		exit(2)
 
 class main(Gtk.Window):
 	def __init__(self):
+		#make the window
 		Gtk.Window.__init__(self, title="game-board")
 		self.grid=Gtk.Grid(orientation=Gtk.Orientation.VERTICAL,)
 		self.add(self.grid)
 		
-		image="/usr/share/game-board/assets/menu-right-null.png"
-			
+		#get the size of the screen we are working with, so we can scale the images correctly based on that
+		resuls = subprocess.Popen(['xrandr'],stdout=subprocess.PIPE).communicate()[0].split("current")[1].split(",")[0]
+		width = resuls.split("x")[0].strip()
+		height = resuls.split("x")[1].strip()
+		width = int(width)
+		height = int(height)
+		width = width/2
+		height = height/2
+		
+		#load the needed images into RAM and scale them
+		null = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-null.png", width, height)
+		print("null")
+		left = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-left.png", width, height)
+		print("left")
+		f_j = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-f_j.png", width, height)
+		print("f_j")
+		k_o = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-k_o.png", width, height)
+		print("k_o")
+		p_t = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-p_t.png", width, height)
+		print("p_t")
+		u_z = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-u_z.png", width, height)
+		print("u_z")
+		a_e = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-a_e.png", width, height)
+		print("a_e")
+		#num = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-0_9.png")
+		#special = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-special.png")
+		
+		image = null
+		
+		#set the images
 		image1 = Gtk.Image()
-		image1.set_from_file("/usr/share/game-board/assets/menu-left.png")
+		image1.set_from_pixbuf(left)
 		self.grid.attach(image1, 1, 0, 1, 1)
 		
 		image2 = Gtk.Image()
-		image2.set_from_file(image)
+		image2.set_from_pixbuf(image)
 		self.grid.attach(image2, 2, 0, 1, 1)
 	
-		self.change_image()
+		#self.change_image(left, a_e, f_j, k_o, p_t, u_z, null)
+		#self.change_image(left, a_e, f_j, k_o, p_t, u_z, num, special, null)
 		
-	def change_image(self):
+	def change_image(self, left, a_e, f_j, k_o, p_t, u_z, null):
+	#def change_image(self, left, a_e, f_j, k_o, p_t, u_z, num, special, null):
 		while True:
-			parent_conn,child_conn = Pipe()
-			receive = Process(target=convert_left, args=(child_conn,))
-			receive.start()
-			degree=parent_conn.recv()
-			#check if degree is greater 337.5 and less than 22.5
-			if degree > 337.5 or degree < 22.5:
-				image="/usr/share/game-board/assets/menu-right-f_j.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 22.5 and less than 67.5
-			elif degree > 22.5 and degree < 67.5:
-				image="/usr/share/game-board/assets/menu-right-k_o.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 67.5 and less than 112.5
-			elif degree > 67.5 and degree < 112.5:
-				image="/usr/share/game-board/assets/menu-right-p_t.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 112.5 and less than 157.5
-			elif degree > 112.5 and degree < 157.5:
-				image="/usr/share/game-board/assets/menu-right-u_z.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 157.5 and less than 202.5
-			elif degree > 157.5 and degree < 202.5:
-				image="/usr/share/game-board/assets/menu-right-0_9.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 202.5 and less than 247.5
-			elif degree > 202.5 and degree < 247.5:
-				image="/usr/share/game-board/assets/menu-right-special.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 247.5 and less than 292.5
-			elif degree > 247.5 and degree < 292.5:
-				#BACKSPACE COMMAND
-				image="/usr/share/game-board/assets/menu-right-null.png"
-				image2.set_from_file(image)
-			#check if degree is greater than 292.5 and less than 337.5
-			elif degree > 292.5 and degree < 337.5:
-				image="/usr/share/game-board/assets/menu-right-a_e.png"
-				image2.set_from_file(image)
-			#if none of the above match, change to null
-			else:
-				image="/usr/share/game-board/assets/menu-right-null.png"
-				image2.set_from_file(image)
+			check()
+			for str in sys.stdin:
+				degree=str
+				degree=degree.split()
+				degree=degree[0]
+				#check if degree is greater 337.5 and less than 22.5
+				#F - J
+				if degree > 337.5 or degree < 22.5:
+					image = f_j
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 22.5 and less than 67.5
+				#K - O
+				elif degree > 22.5 and degree < 67.5:
+					image = k_o
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 67.5 and less than 112.5
+				#P - T
+				elif degree > 67.5 and degree < 112.5:
+					image = p_t
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 112.5 and less than 157.5
+				#U - Z
+				elif degree > 112.5 and degree < 157.5:
+					image = u_z
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 157.5 and less than 202.5
+				#0 - 9
+				elif degree > 157.5 and degree < 202.5:
+					image = num
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 202.5 and less than 247.5
+				#SPECIAL
+				elif degree > 202.5 and degree < 247.5:
+					image = special
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 247.5 and less than 292.5
+				#NULL
+				elif degree > 247.5 and degree < 292.5:
+					#BACKSPACE COMMAND
+					image = null
+					image2.set_from_pixbuf(image)
+				#check if degree is greater than 292.5 and less than 337.5
+				#A - E
+				elif degree > 292.5 and degree < 337.5:
+					image = a_e
+					image2.set_from_pixbuf(image)
+				#if none of the above match, change to null
+				#NULL
+				else:
+					image = null
+					image2.set_from_pixbuf(image)
 def show():
 	window = main()
 	window.set_decorated(True)
@@ -109,4 +169,5 @@ def show():
 	Gtk.main() 
 	window.connect("delete-event", Gtk.main_quit)
 
+check()
 show()

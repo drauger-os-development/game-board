@@ -25,6 +25,7 @@ from inputs import get_gamepad
 from math import atan, degrees
 from time import sleep
 from subprocess import Popen
+import sys
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
@@ -33,7 +34,7 @@ def set_procname(newname):
 	buff.value = newname                 #Null terminated string as it should be
 	libc.prctl(15, byref(buff), 0, 0, 0) #Refer to "#define" of "/usr/include/linux/prctl.h" for the misterious value 16 & arg[3..5] are zero as the man page says.
 
-set_procname("game-board-engine")
+set_procname("gb-engine")
 
 while True:
 	sleep(.1)
@@ -229,6 +230,8 @@ while True:
 		#check if degree is greater than 202.5 and less than 247.5
 		elif rangle > 270 and rangle < 330:
 			Popen(["python","/usr/share/game-board/engine/conversion/type.py","b"])
-	Popen(["python3","/usr/share/game-board/engine/game-pad/translate-left.py",str(angle)])
-	Popen(["python3","/usr/share/game-board/engine/game-pad/translate-right.py",str(rangle)])
+	print("%s left" % (angle))
+	sys.stdout.flush()
+	#print("%s right" % (rangle))
+	sys.stdout.flush()
 
