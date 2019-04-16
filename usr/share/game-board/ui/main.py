@@ -25,7 +25,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
-from os import system
+import os
 import sys
 import subprocess
 import psutil
@@ -53,9 +53,10 @@ def check_proc_running(processName):
 	return False
 
 def check():
-	if not check_proc_running("gb-engine"):
-		subprocess.Popen(['/home/batcastle/Dropbox/GitHub/game-board/usr/share/game-board/ui/error_enr.py'])
-		exit(2)
+	#if not check_proc_running("gb-engine"):
+	#	subprocess.Popen(['/home/batcastle/Dropbox/GitHub/game-board/usr/share/game-board/ui/error_enr.py'])
+	#	exit(2)
+	return True
 
 class main(Gtk.Window):
 	def __init__(self):
@@ -64,10 +65,22 @@ class main(Gtk.Window):
 		self.grid=Gtk.Grid(orientation=Gtk.Orientation.VERTICAL,)
 		self.add(self.grid)
 		
-		#get the size of the screen we are working with, so we can scale the images correctly based on that
-		resuls = subprocess.Popen(['xrandr'],stdout=subprocess.PIPE).communicate()[0].split("current")[1].split(",")[0]
-		width = resuls.split("x")[0].strip()
-		height = resuls.split("x")[1].strip()
+		home = os.environ["HOME"]
+		#check to see if a conf file exists
+		if os.path.exists('%s/.config/game-board/game-board.conf' % (home)):
+			with open('%s/.config/game-board/game-board.conf' % (home)) as r:
+				res = r.read()
+			res = res.split()
+			count = 0
+			for each in res:
+				self.width = [int(s) for s in res if s.isdigit()]
+			height = self.width[1]
+			width = self.width[0]
+		else:
+			#get the size of the screen we are working with, so we can scale the images correctly based on that
+			resuls = subprocess.Popen(['xrandr'],stdout=subprocess.PIPE).communicate()[0].split("current")[1].split(",")[0]
+			width = resuls.split("x")[0].strip()
+			height = resuls.split("x")[1].strip()
 		width = int(width)
 		height = int(height)
 		width = width/2

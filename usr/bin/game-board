@@ -23,7 +23,8 @@
 
 #define how to launch game-board
 EXECUTE () {
-	/usr/share/game-board/engine/game-pad/read_in.py | /usr/share/game-board/ui/main.py
+	killall gb-sleeper
+	/usr/share/game-board/engine/game-pad/analog_in.py | /usr/share/game-board/engine/game-pad/button_in.py | /usr/share/game-board/ui/main.py
 }
 
 #set version number
@@ -43,6 +44,6 @@ elif [ "$1" == "-I" ] || [ "$1" == "--Interface" ] || [ "$1" == "--interface" ];
 	EXECUTE
 elif [ "$1" == "--hidden" ]; then
 	#run the app in hidden mode
-	echo -e "\nERROR: THIS FEATURE DOES NOT EXIST YET.\n"
+	/usr/share/game-board/engine/game-pad/sleep_mode.py
 	exit 2
 fi
