@@ -24,6 +24,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
+from subprocess import Popen
 
 class error(Gtk.Window):
 	def __init__(self):
@@ -63,3 +64,4 @@ def show_error():
 	window.connect("delete-event", Gtk.main_quit)
 
 show_error()
+Popen(["/usr/share/game-board/engine/log.py","ERROR", "FATAL ERROR: game-board engine has crashed", "/usr/share/game-board/ui/error_enr.py"])

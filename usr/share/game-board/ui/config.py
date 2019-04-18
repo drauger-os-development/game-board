@@ -26,6 +26,9 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 import os
+from subprocess import Popen
+
+Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Configuration Editor Called", "/usr/share/game-board/ui/config.py"])
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
@@ -44,7 +47,7 @@ class main(Gtk.Window):
 		self.add(self.grid)
 		
 		main_text = Gtk.Label()
-		main_text.set_markup("""	Set game-board configuration. <a href=\"www.github.com\"title=\"By default, we detect your screen resolution\">By default, we detect your screen resolution</a>	""")
+		main_text.set_markup("""	Set game-board configuration. <a href=\"file:///usr/share/game-board/assets/index.html\"title=\"Help and Info\">By default, we detect your screen resolution</a>	""")
 		main_text.set_justify(Gtk.Justification.CENTER)
 		self.grid.attach(main_text, 1, 1, 4, 1)
 		
@@ -71,17 +74,16 @@ class main(Gtk.Window):
 			self.width_dialog.set_text(str(self.width))
 			self.grid.attach(self.width_dialog, 1, 5, 1, 1)
 			
-			X = Gtk.Label()
-			X.set_markup(""" X """)
-			X.set_justify(Gtk.Justification.CENTER)
-			self.grid.attach(X, 2, 5, 1, 1)
+			self.X = Gtk.Label()
+			self.X.set_markup(""" X """)
+			self.X.set_justify(Gtk.Justification.CENTER)
+			self.grid.attach(self.X, 2, 5, 1, 1)
 			
 			self.height_dialog = Gtk.Entry()
 			self.height_dialog.set_text(str(self.height))
 			self.grid.attach(self.height_dialog, 3, 5, 1, 1)
 			
-		except Exception as e:
-			print(e)
+		except:
 			self.checkbox_auto.set_active(True)
 			self.height = 0
 			self.width = 0
@@ -120,16 +122,18 @@ class main(Gtk.Window):
 		
 	def onautoclicked(self, widget):
 		if widget.get_active():
-			print("ON")
+			self.grid.remove(self.width_dialog)
+			self.grid.remove(self.height_dialog)
+			self.grid.remove(self.X)
 		else:
 			self.width_dialog = Gtk.Entry()
 			self.width_dialog.set_text("Width of Monitor")
 			self.grid.attach(self.width_dialog, 1, 5, 1, 1)
 			
-			X = Gtk.Label()
-			X.set_markup(""" X """)
-			X.set_justify(Gtk.Justification.CENTER)
-			self.grid.attach(X, 2, 5, 1, 1)
+			self.X = Gtk.Label()
+			self.X.set_markup(""" X """)
+			self.X.set_justify(Gtk.Justification.CENTER)
+			self.grid.attach(self.X, 2, 5, 1, 1)
 			
 			self.height_dialog = Gtk.Entry()
 			self.height_dialog.set_text("Height of Monitor")

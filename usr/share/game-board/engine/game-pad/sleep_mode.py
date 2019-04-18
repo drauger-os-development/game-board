@@ -21,7 +21,6 @@
 #  MA 02110-1301, USA.
 #  
 #  
-from time import sleep
 from subprocess import Popen
 from pynput.mouse import Listener
 
@@ -36,11 +35,10 @@ def on_click(x, y, button, pressed):
 	if pressed and str(button) == "Button.left":
 		try:
 			Popen(["/usr/bin/game-board","-I"])
+			Popen(["/usr/share/game-board/engine/log.py","NOTICE", "game-board re-started from sleep", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 			
 		except:
-			error = open("/tmp/game-board.log", "a")
-			error.write("ERROR: /usr/bin/game-board not present")
-			error.close()
+			Popen(["/usr/share/game-board/engine/log.py","ERROR", "/usr/bin/game-board not present", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 		# Stop listener
 		return False
         
@@ -48,22 +46,29 @@ set_procname("gb-sleeper")
 
 try:
 	Popen(["/usr/bin/killall","gb-engine1"])
+	Popen(["/usr/share/game-board/engine/log.py","NOTICE", "gb-engine1 killed", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	
 except:
+	Popen(["/usr/share/game-board/engine/log.py","ERROR", "gb-engine1 not running", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	pass
 
 try:
 	Popen(["/usr/bin/killall","gb-engine2"])
+	Popen(["/usr/share/game-board/engine/log.py","NOTICE", "gb-engine2 killed", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	
 except:
+	Popen(["/usr/share/game-board/engine/log.py","ERROR", "gb-engine2 not running", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	pass
 
 try:
 	Popen(["/usr/bin/killall","gb-gui"])
+	Popen(["/usr/share/game-board/engine/log.py","NOTICE", "gb-gui killed", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	
 except:
+	Popen(["/usr/share/game-board/engine/log.py","ERROR", "gb-gui not running", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 	pass
 	
+Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Starting listener . . .", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 while True:
 	with Listener(on_click=on_click) as listener:
 		listener.join()

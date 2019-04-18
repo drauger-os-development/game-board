@@ -3,6 +3,6 @@ Version: 0.0.1-alpha1
 Maintainer: Thomas Castleman <contact@draugeros.org>
 Architecture: all
 Priority: optional
-Depends: python-psutil (>=5.4.2-1)
+Depends: python-psutil (>=5.4.2-1), python-pygame (>=1.9.1release)
 Description: Keyboard interface for Xbox and PlayStation controllers
  game-board is designed to act something like an on-screen keyboard with a touch screen. However, instead of responding to touch or mouse input, it watches the direction the analog sticks are pointing and determines what letter should be put in based on their orientations. It provides visual feedback as to which character is currectly selected for input so the user can ensure that the right thing will be put in.

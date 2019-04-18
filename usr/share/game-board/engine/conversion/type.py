@@ -51,6 +51,9 @@ elif output_key == "down":
 elif output_key == "enter":
 	keyboard.press(Key.enter)
 	keyboard.release(Key.enter)
+elif output_key == "tab":
+	keyboard.press(Key.tab)
+	keyboard.release(Key.tab)
 else:
 	keyboard.press(output_key)
 	keyboard.release(output_key)

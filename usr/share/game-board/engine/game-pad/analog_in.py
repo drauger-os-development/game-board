@@ -128,77 +128,106 @@ while True:
 	#check if degree is greater 337.5 and less than 22.5
 	if angle > 337.5 or angle < 22.5:
 		if rangle > 330 or rangle < 30:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","h"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","h"])
+			print("h")
 		#check if degree is greater than 22.5 and less than 67.5
 		elif rangle > 30 and rangle < 90:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","i"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","i"])
+			print("i")
 		#check if degree is greater than 67.5 and less than 112.5
 		elif rangle > 90 and rangle < 150:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","j"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","j"])
+			print("j")
 		#check if degree is greater than 112.5 and less than 157.5
 		elif rangle > 150 and rangle < 210:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			print("shift")
 		#check if degree is greater than 157.5 and less than 202.5
 		elif rangle > 210 and rangle < 270:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","f"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","f"])
+			print("f")
 		#check if degree is greater than 202.5 and less than 247.5
 		elif rangle > 270 and rangle < 330:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","g"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","g"])
+			print("g")
+		sys.stdout.flush()
 	#check if degree is greater than 22.5 and less than 67.5
 	elif angle > 22.5 and angle < 67.5:
 		if rangle > 330 or rangle < 30:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","m"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","m"])
+			print("m")
 		#check if degree is greater than 22.5 and less than 67.5
 		elif rangle > 30 and rangle < 90:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","n"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","n"])
+			print("n")
 		#check if degree is greater than 67.5 and less than 112.5
 		elif rangle > 90 and rangle < 150:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","o"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","o"])
+			print("o")
 		#check if degree is greater than 112.5 and less than 157.5
 		elif rangle > 150 and rangle < 210:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			print("shift")
 		#check if degree is greater than 157.5 and less than 202.5
 		elif rangle > 210 and rangle < 270:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","k"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","k"])
+			print("k")
 		#check if degree is greater than 202.5 and less than 247.5
 		elif rangle > 270 and rangle < 330:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","l"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","l"])
+			print("l")
+		sys.stdout.flush()
 	#check if degree is greater than 67.5 and less than 112.5
 	elif angle > 67.5 and angle < 112.5:
 		if rangle > 330 or rangle < 30:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","r"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","r"])
+			print("r")
 		#check if degree is greater than 22.5 and less than 67.5
 		elif rangle > 30 and rangle < 90:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","s"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","s"])
+			print("s")
 		#check if degree is greater than 67.5 and less than 112.5
 		elif rangle > 90 and rangle < 150:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","t"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","t"])
+			print("t")
 		#check if degree is greater than 112.5 and less than 157.5
 		elif rangle > 150 and rangle < 210:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			print("shift")
 		#check if degree is greater than 157.5 and less than 202.5
 		elif rangle > 210 and rangle < 270:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","p"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","p"])
+			print("p")
 		#check if degree is greater than 202.5 and less than 247.5
 		elif rangle > 270 and rangle < 330:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","q"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","q"])
+			print("q")
+		sys.stdout.flush()
 	#check if degree is greater than 112.5 and less than 157.5
 	elif angle > 112.5 and angle < 157.5:
 		#U-Z
 		if rangle > 0 or rangle < 51.428571429:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","u"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","u"])
+			print("u")
 		elif rangle > 51.428571429 and rangle < 102.857142857:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","v"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","v"])
+			print("v")
 		elif rangle > 102.857142857 and rangle < 154.285714286:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","w"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","w"])
+			print("w")
 		elif rangle > 154.285714286 and rangle < 205.714285714:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			print("shift")
 		elif rangle > 205.714285714 and rangle < 257.142857143:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","x"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","x"])
+			print("x")
 		elif rangle > 257.142857143 and rangle < 308.571428571:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","y"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","y"])
+			print("y")
 		elif rangle > 308.571428571 and rangle < 360:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","z"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","z"])
+			print("z")
+		sys.stdout.flush()
 	#check if degree is greater than 157.5 and less than 202.5
 	elif angle > 157.5 and angle < 202.5:
 		#NUMBERS
@@ -210,28 +239,34 @@ while True:
 	#check if degree is greater than 247.5 and less than 292.5
 	elif angle > 247.5 and angle < 292.5:
 		#BACKSPACE COMMAND
-		Popen(["python","/usr/share/game-board/engine/conversion/type.py","backspace"])
+		#Popen(["python","/usr/share/game-board/engine/conversion/type.py","backspace"])
+		print("backspace")
+		sys.stdout.flush()
 	#check if degree is greater than 292.5 and less than 337.5
 	elif angle > 292.5 and angle < 337.5:
 		if rangle > 330 or rangle < 30:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","c"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","c"])
+			print("c")
 		#check if degree is greater than 22.5 and less than 67.5
 		elif rangle > 30 and rangle < 90:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","d"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","d"])
+			print("d")
 		#check if degree is greater than 67.5 and less than 112.5
 		elif rangle > 90 and rangle < 150:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","e"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","e"])
+			print("e")
 		#check if degree is greater than 112.5 and less than 157.5
 		elif rangle > 150 and rangle < 210:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","shift"])
+			print("shift")
 		#check if degree is greater than 157.5 and less than 202.5
 		elif rangle > 210 and rangle < 270:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","a"])
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","a"])
+			print("a")
 		#check if degree is greater than 202.5 and less than 247.5
 		elif rangle > 270 and rangle < 330:
-			Popen(["python","/usr/share/game-board/engine/conversion/type.py","b"])
-	print("%s left" % (angle))
-	sys.stdout.flush()
-	#print("%s right" % (rangle))
+			#Popen(["python","/usr/share/game-board/engine/conversion/type.py","b"])
+			print("b")
+	print(angle)
 	sys.stdout.flush()
 

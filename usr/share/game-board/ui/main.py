@@ -88,19 +88,19 @@ class main(Gtk.Window):
 		
 		#load the needed images into RAM and scale them
 		null = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-null.png", width, height)
-		print("null")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "null image loaded", "/usr/share/game-board/ui/main.py"])
 		left = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-left.png", width, height)
-		print("left")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "left main image loaded", "/usr/share/game-board/ui/main.py"])
 		f_j = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-f_j.png", width, height)
-		print("f_j")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters F - J loaded", "/usr/share/game-board/ui/main.py"])
 		k_o = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-k_o.png", width, height)
-		print("k_o")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters K - O loaded", "/usr/share/game-board/ui/main.py"])
 		p_t = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-p_t.png", width, height)
-		print("p_t")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters P - T loaded", "/usr/share/game-board/ui/main.py"])
 		u_z = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-u_z.png", width, height)
-		print("u_z")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters U - Z loaded", "/usr/share/game-board/ui/main.py"])
 		a_e = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-a_e.png", width, height)
-		print("a_e")
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters A - E loaded", "/usr/share/game-board/ui/main.py"])
 		#num = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-0_9.png")
 		#special = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-special.png")
 		
@@ -109,23 +109,60 @@ class main(Gtk.Window):
 		#set the images
 		image1 = Gtk.Image()
 		image1.set_from_pixbuf(left)
-		self.grid.attach(image1, 1, 0, 1, 1)
+		self.grid.attach(image1, 1, 0, 3, 1)
 		
 		image2 = Gtk.Image()
 		image2.set_from_pixbuf(image)
-		self.grid.attach(image2, 2, 0, 1, 1)
+		self.grid.attach(image2, 4, 0, 3, 1)
+		
+		shortcut1 = Gtk.Label()
+		shortcut1.set_markup("Move Left:\nLeft Bumper")
+		shortcut1.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut1, 1, 1, 1, 1)
+		
+		shortcut2 = Gtk.Label()
+		shortcut2.set_markup("Move Right:\nRight Bumper")
+		shortcut2.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut2, 2, 1, 1, 1)
+		
+		shortcut3 = Gtk.Label()
+		shortcut3.set_markup("Space:\nXbox:A | PS3/4:X")
+		shortcut3.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut3, 3, 1, 1, 1)
+		
+		shortcut4 = Gtk.Label()
+		shortcut4.set_markup("Enter:\nXbox:X | PS3/4:Square")
+		shortcut4.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut4, 4, 1, 1, 1)
+		
+		shortcut5 = Gtk.Label()
+		shortcut5.set_markup("Tab:\nXbox:Y | PS3/4:Triangle")
+		shortcut5.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut5, 5, 1, 1, 1)
+		
+		shortcut6 = Gtk.Label()
+		shortcut6.set_markup("Kill game-board:\nXbox:B | PS3/4:Circle")
+		shortcut6.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(shortcut6, 6, 1, 1, 1)
 	
 		#self.change_image(left, a_e, f_j, k_o, p_t, u_z, null)
 		#self.change_image(left, a_e, f_j, k_o, p_t, u_z, num, special, null)
 		
 	def change_image(self, left, a_e, f_j, k_o, p_t, u_z, null):
 	#def change_image(self, left, a_e, f_j, k_o, p_t, u_z, num, special, null):
+		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Listener / image changer started", "/usr/share/game-board/ui/main.py"])
 		while True:
 			check()
-			for str in sys.stdin:
-				degree=str
+			for stdin in sys.stdin:
+				degree=stdin
 				degree=degree.split()
 				degree=degree[0]
+				try:
+					char = float(char)
+				
+				except:
+					Popen(["/usr/share/game-board/engine/log.py","WARNING", "Non-float argument passed on stdin", "/usr/share/game-board/ui/main.py"])
+					continue
 				#check if degree is greater 337.5 and less than 22.5
 				#F - J
 				if degree > 337.5 or degree < 22.5:
