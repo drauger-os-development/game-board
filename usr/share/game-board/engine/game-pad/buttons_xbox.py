@@ -26,6 +26,7 @@
 import pygame
 import sys
 from subprocess import Popen
+from ..conversion.py import type_out
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
@@ -52,7 +53,7 @@ try:
 						if button == 0:
 							print(button)
 							#button = "a"
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","space"])
+							type_out("space")
 							break
 						elif button == 1:
 							print(button)
@@ -80,22 +81,22 @@ try:
 						elif button == 2:
 							#button = "x"
 							print(button)
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","enter"])
+							type_out("enter")
 							break
 						elif button == 3:
 							print(button)
 							#button = "y"
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","tab"])
+							type_out("tab")
 							break
 						elif button == 4:
 							print(button)
 							#button = "left_bumper"
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","left"])
+							type_out("left")
 							break
 						elif button == 5:
 							print(button)
 							#button = "right_bumper"
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","right"])
+							type_out("right")
 							''''''
 							break
 						elif button == 6:
@@ -121,7 +122,7 @@ try:
 						elif button == 9:
 							print(button)
 							#left analog button
-							Popen(["python","/usr/share/game-board/engine/conversion/type.py","backspace"])
+							type_out("backspace")
 							break
 						elif button == 10:
 							#right analog button
@@ -141,7 +142,7 @@ try:
 								printed = 1
 							if printed == 1:
 								char = str(char)
-								Popen(["python","/usr/share/game-board/engine/conversion/type.py",char])
+								type_out(char)
 							break
 						else:
 							print(button)
