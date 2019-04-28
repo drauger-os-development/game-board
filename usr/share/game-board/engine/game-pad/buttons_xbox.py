@@ -146,7 +146,6 @@ try:
 							break
 						else:
 							print(button)
-							button = None
 							break
 					else:
 						button = button+1
