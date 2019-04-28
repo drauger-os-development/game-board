@@ -50,52 +50,65 @@ try:
 						if button == 0:
 							print(button)
 							#button = "a"
+							#SWITCH: Y
 							break
 						elif button == 1:
 							print(button)
 							#button = "b"
+							#SWITCH: B
 							break
 						elif button == 2:
 							#button = "x"
+							#SWITCH: A
 							print(button)
 							break
 						elif button == 3:
 							print(button)
 							#button = "y"
+							#SWITCH: X
 							break
 						elif button == 4:
 							print(button)
 							#button = "left_bumper"
+							#SWITCH: LEFT BUMPER
 							break
 						elif button == 5:
 							print(button)
 							#button = "right_bumper"
+							#SWITCH: RIGHT BUMPER
 							break
 						elif button == 6:
 							print(button)
 							#button = "back"
+							#SWITCH: LEFT TRIGGER
 							break
 						elif button == 7:
 							print(button)
 							#button = "start"
+							#SWITCH: RIGHT TRIGGER
 							break
 						elif button == 8:
 							print(button)
-							#button = "menu""
+							#button = "menu"
+							#SWITCH: -
 							break
 						elif button == 9:
 							print(button)
 							#left analog button
+							#SWITCH: +
 							break
 						elif button == 10:
 							#right analog button
+							#SWITCH: LEFT ANALOG BUTTON
 							print(button)
 							break
 						elif button == 11:
 							print(button)
 							#button = None
+							#SWITCH: RIGHT ANALOG BUTTON
 							break
 						elif button == 12:
+							#SWITCH: HOME
 							print(button)
 							break
 						elif button == 13:
