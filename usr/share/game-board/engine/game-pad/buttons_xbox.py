@@ -26,7 +26,7 @@
 import pygame
 import sys
 from subprocess import Popen
-from ..conversion.py import type_out
+from conversion import type_out
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer

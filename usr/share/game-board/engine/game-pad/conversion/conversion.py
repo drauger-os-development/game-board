@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  type.py
+#  conversion.py
 #  
 #  Copyright 2019 Thomas Castleman <contact@draugeros.org>
 #  
@@ -27,7 +27,7 @@ import sys
 def type_out(output_key):
 	from pynput.keyboard import Key, Controller
 	keyboard=Controller()
-	output_key=sys.argv[1]
+	#output_key=sys.argv[1]
 	output_key=str(output_key)
 	if output_key == "backspace":
 		keyboard.press(Key.backspace)

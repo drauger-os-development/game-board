@@ -24,7 +24,7 @@
 import pygame
 import sys
 from subprocess import Popen
-from ..conversion.py import type_out
+from conversion import type_out
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
@@ -104,27 +104,26 @@ try:
 						elif button == 7:
 							print(button)
 							#SWITCH: RIGHT TRIGGER
-							stdin = sys.stdin
-							stdin = stdin.split()
-							char = stdin[0]
-							printed = 0
-							try:
-								float(char)
-								try:
-									int(char)
-									printed = 1
-								except:
-									printed = 0
-							except:
-								printed = 1
-							if printed == 1:
-								char = str(char)
-								type_out(char)
-								break
-							else:
-								print(button)
-								button = None
-								break
+							#stdin = sys.stdin
+							#stdin = stdin.split()
+							#char = stdin[0]
+							#printed = 0
+							#try:
+							#	float(char)
+							#	try:
+							#		int(char)
+							#		printed = 1
+							#	except:
+							#		printed = 0
+							#except:
+							#	printed = 1
+							#if printed == 1:
+							#	char = str(char)
+							#	type_out(char)
+							#	break
+							#else:
+							print(button)
+							break
 						elif button == 8:
 							print(button)
 							#SWITCH: -
