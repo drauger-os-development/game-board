@@ -49,66 +49,80 @@ try:
 					if j.get_button(button):
 						if button == 0:
 							print(button)
-							#button = "a"
+							#Xbox: "a"
 							#SWITCH: Y
+							#PS3: Triangle
 							break
 						elif button == 1:
 							print(button)
-							#button = "b"
+							#Xbox: "b"
 							#SWITCH: B
+							#PS3: Circle
 							break
 						elif button == 2:
-							#button = "x"
+							#Xbox: "x"
 							#SWITCH: A
+							#PS3: X
 							print(button)
 							break
 						elif button == 3:
 							print(button)
-							#button = "y"
+							#Xbox: "y"
 							#SWITCH: X
+							#PS3: Square
 							break
 						elif button == 4:
 							print(button)
-							#button = "left_bumper"
+							#Xbox: "left_bumper"
 							#SWITCH: LEFT BUMPER
+							#PS3: Left Bumper
 							break
 						elif button == 5:
 							print(button)
-							#button = "right_bumper"
+							#Xbox: "right_bumper"
 							#SWITCH: RIGHT BUMPER
+							#PS3: Right Bumper
 							break
 						elif button == 6:
 							print(button)
-							#button = "back"
+							#Xbox: "back"
 							#SWITCH: LEFT TRIGGER
+							#PS3: Left Trigger
 							break
 						elif button == 7:
 							print(button)
-							#button = "start"
+							#Xbox: "start"
 							#SWITCH: RIGHT TRIGGER
+							#PS3: Right Trigger
 							break
 						elif button == 8:
 							print(button)
-							#button = "menu"
+							#Xbox: "menu"
 							#SWITCH: -
+							#PS3: Select
 							break
 						elif button == 9:
 							print(button)
-							#left analog button
+							#Xbox: left analog button
 							#SWITCH: +
+							#PS3: Start
 							break
 						elif button == 10:
-							#right analog button
+							#Xbox: right analog button
 							#SWITCH: LEFT ANALOG BUTTON
+							#PS3: Left Analog Button
 							print(button)
 							break
 						elif button == 11:
 							print(button)
-							#button = None
+							#Xbox: None
 							#SWITCH: RIGHT ANALOG BUTTON
+							#PS3: Right Analog Button
 							break
 						elif button == 12:
 							#SWITCH: HOME
+							#PS3: None
+							#Xbox: None
 							print(button)
 							break
 						elif button == 13:
