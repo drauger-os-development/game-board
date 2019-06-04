@@ -53,9 +53,9 @@ def check_proc_running(processName):
 	return False
 
 def check():
-	#if not check_proc_running("gb-engine"):
-	#	subprocess.Popen(['/home/batcastle/Dropbox/GitHub/game-board/usr/share/game-board/ui/error_enr.py'])
-	#	exit(2)
+	if not check_proc_running("gb-engine"):
+		subprocess.Popen(['/usr/bin/python3','/home/batcastle/Dropbox/GitHub/game-board/usr/share/game-board/ui/error_enr.py'])
+		exit(2)
 	return True
 
 class main(Gtk.Window):
@@ -88,19 +88,19 @@ class main(Gtk.Window):
 		
 		#load the needed images into RAM and scale them
 		null = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-null.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "null image loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "null image loaded", "/usr/share/game-board/ui/main.py"])
 		left = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-left.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "left main image loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "left main image loaded", "/usr/share/game-board/ui/main.py"])
 		f_j = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-f_j.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters F - J loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "image for letters F - J loaded", "/usr/share/game-board/ui/main.py"])
 		k_o = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-k_o.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters K - O loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "image for letters K - O loaded", "/usr/share/game-board/ui/main.py"])
 		p_t = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-p_t.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters P - T loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "image for letters P - T loaded", "/usr/share/game-board/ui/main.py"])
 		u_z = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-u_z.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters U - Z loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "image for letters U - Z loaded", "/usr/share/game-board/ui/main.py"])
 		a_e = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/game-board/assets/menu-right-a_e.png", width, height)
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "image for letters A - E loaded", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "image for letters A - E loaded", "/usr/share/game-board/ui/main.py"])
 		#num = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-0_9.png")
 		#special = GdkPixbuf.Pixbuf.new_from_file("/usr/share/game-board/assets/menu-right-special.png")
 		
@@ -150,7 +150,7 @@ class main(Gtk.Window):
 		
 	def change_image(self, left, a_e, f_j, k_o, p_t, u_z, null):
 	#def change_image(self, left, a_e, f_j, k_o, p_t, u_z, num, special, null):
-		Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Listener / image changer started", "/usr/share/game-board/ui/main.py"])
+		Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "Listener / image changer started", "/usr/share/game-board/ui/main.py"])
 		while True:
 			check()
 			for stdin in sys.stdin:
@@ -161,7 +161,7 @@ class main(Gtk.Window):
 					char = float(char)
 				
 				except:
-					Popen(["/usr/share/game-board/engine/log.py","WARNING", "Non-float argument passed on stdin", "/usr/share/game-board/ui/main.py"])
+					Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","WARNING", "Non-float argument passed on stdin", "/usr/share/game-board/ui/main.py"])
 					continue
 				#check if degree is greater 337.5 and less than 22.5
 				#F - J

@@ -23,16 +23,16 @@
 #
 import sys
 import os
-log_type = sys.argv[0]
+log_type = sys.argv[1]
 log_type = str(log_type)
 log_type = log_type.upper()
-log_message = sys.argv[1]
+log_message = sys.argv[2]
 log_message = str(log_message)
-logging_file = sys.argv[2]
+logging_file = sys.argv[3]
 logging_file = str(logging_file)
 if not os.path.exists('/tmp/game-board'):
 	os.makedirs("/tmp/game-board")
-if log_type == "ERROR"
+if log_type == "ERROR":
 	error = open('/tmp/game-board/error.log', "a")
 	error.write("%s from %s: %s\n" % (log_type,logging_file,log_message))
 	error.close()

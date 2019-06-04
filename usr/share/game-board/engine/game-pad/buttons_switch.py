@@ -104,24 +104,24 @@ try:
 						elif button == 7:
 							print(button)
 							#SWITCH: RIGHT TRIGGER
-							#stdin = sys.stdin
-							#stdin = stdin.split()
-							#char = stdin[0]
-							#printed = 0
-							#try:
-							#	float(char)
-							#	try:
-							#		int(char)
-							#		printed = 1
-							#	except:
-							#		printed = 0
-							#except:
-							#	printed = 1
-							#if printed == 1:
-							#	char = str(char)
-							#	type_out(char)
-							#	break
-							#else:
+							stdin = sys.stdin
+							stdin = stdin.split()
+							char = stdin[0]
+							printed = 0
+							try:
+								float(char)
+								try:
+									int(char)
+									printed = 1
+								except:
+									printed = 0
+							except:
+								printed = 1
+							if printed == 1:
+								char = str(char)
+								type_out(char)
+								break
+							else:
 							print(button)
 							break
 						elif button == 8:
@@ -137,7 +137,7 @@ try:
 						elif button == 9:
 							print(button)
 							#SWITCH: +
-							Popen(["/usr/share/game-board/engine/game-pad/sleep_mode.py"])
+							Popen(["/usr/bin/python3","/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 							break
 						else:
 							print(button)

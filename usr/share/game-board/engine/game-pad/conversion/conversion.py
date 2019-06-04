@@ -29,6 +29,7 @@ def type_out(output_key):
 	keyboard=Controller()
 	#output_key=sys.argv[1]
 	output_key=str(output_key)
+	output_key=output_key.lower()
 	if output_key == "backspace":
 		keyboard.press(Key.backspace)
 		keyboard.release(Key.backspace)

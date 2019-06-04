@@ -112,12 +112,12 @@ try:
 						elif button == 7:
 							print(button)
 							#button = "start"
-							Popen(["/usr/share/game-board/engine/game-pad/sleep_mode.py"])
+							Popen(["/usr/bin/python3","/usr/share/game-board/engine/game-pad/sleep_mode.py"])
 							break
 						elif button == 8:
 							print(button)
 							#button = "menu""
-							Popen(["python","/usr/share/game-board/ui/config.py"])
+							Popen(["/usr/bin/python3","/usr/share/game-board/ui/config.py"])
 							break
 						elif button == 9:
 							print(button)

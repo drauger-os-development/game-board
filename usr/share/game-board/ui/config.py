@@ -28,7 +28,7 @@ from gi.repository import Gtk, Gdk
 import os
 from subprocess import Popen
 
-Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Configuration Editor Called", "/usr/share/game-board/ui/config.py"])
+#Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Configuration Editor Called", "/usr/share/game-board/ui/config.py"])
 
 def set_procname(newname):
 	from ctypes import cdll, byref, create_string_buffer
@@ -93,31 +93,54 @@ class main(Gtk.Window):
 		
 		button_save = Gtk.Button.new_with_label("Save Config")
 		button_save.connect("clicked", self.onsaveclicked)
-		self.grid.attach(button_save, 5, 7, 1, 1)
+		self.grid.attach(button_save, 5, 9, 1, 1)
 		
 		button_cancel = Gtk.Button.new_with_label("Cancel")
 		button_cancel.connect("clicked", self.oncancelclicked)
-		self.grid.attach(button_cancel, 4, 7, 1, 1)
+		self.grid.attach(button_cancel, 4, 9, 1, 1)
 		
+		labeldropdown = Gtk.Label()
+		labeldropdown.set_markup("\nDesignate what type of controller will be used (Default is Xbox):")
+		labeldropdown.set_justify(Gtk.Justification.CENTER)
+		self.grid.attach(labeldropdown, 1, 7, 3, 1)
+		
+		self.dropdown = Gtk.ComboBoxText()
+		self.dropdown.insert_text(0, "Switch")
+		self.dropdown.insert_text(-1, "PlayStation 3")
+		self.dropdown.insert_text(-1, "Xbox 360/One")
+		self.grid.attach(self.dropdown, 1, 8, 3, 1)
+	
 	def oncancelclicked(self, widget):
 		exit(1)
 		
 	def onsaveclicked(self, widget):
 		#delete old conf file
-		active = self.checkbox_auto.get_active()
-		width = self.width_dialog.get_text().decode('utf8')
-		height = self.height_dialog.get_text().decode('utf8')
 		home = os.environ["HOME"]
 		if os.path.exists('%s/.config/game-board/game-board.conf' % (home)):
 			os.remove('%s/.config/game-board/game-board.conf' % (home))
-		#write variables to new conf file
-		if not active:
+		try:
+			active = self.checkbox_auto.get_active()
+			width = self.width_dialog.get_text().decode('utf8')
+			height = self.height_dialog.get_text().decode('utf8')
 			if not os.path.exists("%s/.config/game-board" % (home)):
 				os.makedirs("%s/.config/game-board" % (home))
 			save = open('%s/.config/game-board/game-board.conf' % (home), "a")
 			save.write("width = %s\n" % (width))
 			save.write("height = %s\n" % (height))
 			save.close()
+		#write variables to new conf file
+		except:
+			pass
+		contents = self.dropdown.get_active_text()
+		dest = "%s/.config/game-board/controller-buttons.py" % (home)
+		if contents == "Switch":
+			os.symlink("/usr/share/game-board/engine/game-pad/buttons_switch.py", dest)
+		elif contents == "PlayStation 3":
+			os.symlink("/usr/share/game-board/engine/game-pad/buttons_ps3.py", dest)
+		elif contents == "Xbox 360/One":
+			os.symlink("/usr/share/game-board/engine/game-pad/buttons_xbox.py", dest)
+		else:
+			os.symlink("/usr/share/game-board/engine/game-pad/buttons_xbox.py", dest)
 		exit(0)
 		
 	def onautoclicked(self, widget):

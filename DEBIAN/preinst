@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 case "$1" in
-	configure) 
+	configure|install) 
 		su "$(users)" -c '$HOME/.local/bin/pip install --user --upgrade pynput'
 		su "$(users)" -c '$HOME/.local/bin/pip install --user --upgrade inputs';;
 	abort-upgrade|abort-deconfigure|abort-remove) ;;

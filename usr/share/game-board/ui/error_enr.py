@@ -64,4 +64,4 @@ def show_error():
 	window.connect("delete-event", Gtk.main_quit)
 
 show_error()
-Popen(["/usr/share/game-board/engine/log.py","ERROR", "FATAL ERROR: game-board engine has crashed", "/usr/share/game-board/ui/error_enr.py"])
+Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","ERROR", "FATAL ERROR: game-board engine has crashed", "/usr/share/game-board/ui/error_enr.py"])
