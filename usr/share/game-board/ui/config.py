@@ -105,7 +105,7 @@ class main(Gtk.Window):
 		self.grid.attach(labeldropdown, 1, 7, 3, 1)
 		
 		self.dropdown = Gtk.ComboBoxText()
-		self.dropdown.insert_text(0, "Switch")
+		self.dropdown.insert_text(0, "Switch/PlayStation 4")
 		self.dropdown.insert_text(-1, "PlayStation 3")
 		self.dropdown.insert_text(-1, "Xbox 360/One")
 		self.grid.attach(self.dropdown, 1, 8, 3, 1)
@@ -133,8 +133,8 @@ class main(Gtk.Window):
 			pass
 		contents = self.dropdown.get_active_text()
 		dest = "%s/.config/game-board/controller-buttons.py" % (home)
-		if contents == "Switch":
-			os.symlink("/usr/share/game-board/engine/game-pad/buttons_switch.py", dest)
+		if contents == "Switch/PlayStation 4":
+			os.symlink("/usr/share/game-board/engine/game-pad/buttons_switch_ps4.py", dest)
 		elif contents == "PlayStation 3":
 			os.symlink("/usr/share/game-board/engine/game-pad/buttons_ps3.py", dest)
 		elif contents == "Xbox 360/One":

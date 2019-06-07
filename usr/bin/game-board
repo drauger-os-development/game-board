@@ -29,7 +29,7 @@ EXECUTE () {
 
 #set version number
 VERSION="0.0.2-alpha1"
-/usr/bin/python3 /usr/share/game-board/engine/log.py 'NOTICE' '/usr/bin/game-board' 'game-board Launched'
+/usr/bin/python3 /usr/share/game-board/engine/log.py 'NOTICE' 'game-board Launched' '/usr/bin/game-board'
 #work on what the user wants
 if [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
 	#print version number
