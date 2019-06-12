@@ -25,15 +25,9 @@ import pygame
 import sys
 from subprocess import Popen
 from conversion import type_out
+from setproctitle import setproctitle
 
-def set_procname(newname):
-	from ctypes import cdll, byref, create_string_buffer
-	libc = cdll.LoadLibrary('libc.so.6')    #Loading a 3rd party library C
-	buff = create_string_buffer(10) #Note: One larger than the name (man prctl says that)
-	buff.value = newname                 #Null terminated string as it should be
-	libc.prctl(15, byref(buff), 0, 0, 0) #Refer to "#define" of "/usr/include/linux/prctl.h" for the misterious value 16 & arg[3..5] are zero as the man page says.
-
-set_procname("gb-engine2")
+setproctitle("gb-engine2")
 
 pygame.init()
 

@@ -23,13 +23,9 @@
 #  
 from subprocess import Popen
 from pynput.mouse import Listener
+from setproctitle import setproctitle
 
-def set_procname(newname):
-	from ctypes import cdll, byref, create_string_buffer
-	libc = cdll.LoadLibrary('libc.so.6')    #Loading a 3rd party library C
-	buff = create_string_buffer(10) #Note: One larger than the name (man prctl says that)
-	buff.value = newname                 #Null terminated string as it should be
-	libc.prctl(15, byref(buff), 0, 0, 0) #Refer to "#define" of "/usr/include/linux/prctl.h" for the misterious value 16 & arg[3..5] are zero as the man page says.
+setproctitle("gb-sleeper")
 
 def on_click(x, y, button, pressed):
 	if pressed and str(button) == "Button.left":
@@ -42,8 +38,6 @@ def on_click(x, y, button, pressed):
 		# Stop listener
 		return False
         
-set_procname("gb-sleeper")
-
 try:
 	Popen(["/usr/bin/killall","gb-engine1"])
 	Popen(["/usr/bin/python3","/usr/share/game-board/engine/log.py","NOTICE", "gb-engine1 killed", "/usr/share/game-board/engine/game-pad/sleep_mode.py"])

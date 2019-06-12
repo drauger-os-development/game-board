@@ -27,17 +27,11 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 import os
 from subprocess import Popen
+from setproctitle import setproctitle
 
-#Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Configuration Editor Called", "/usr/share/game-board/ui/config.py"])
+Popen(["/usr/share/game-board/engine/log.py","NOTICE", "Configuration Editor Called", "/usr/share/game-board/ui/config.py"])
 
-def set_procname(newname):
-	from ctypes import cdll, byref, create_string_buffer
-	libc = cdll.LoadLibrary('libc.so.6')    #Loading a 3rd party library C
-	buff = create_string_buffer(10) #Note: One larger than the name (man prctl says that)
-	buff.value = newname                 #Null terminated string as it should be
-	libc.prctl(15, byref(buff), 0, 0, 0) #Refer to "#define" of "/usr/include/linux/prctl.h" for the misterious value 16 & arg[3..5] are zero as the man page says.
-
-set_procname("gb-config")
+setproctitle("gb-config")
 
 class main(Gtk.Window):
 	def __init__(self):
