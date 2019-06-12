@@ -1,8 +1,8 @@
 Package: game-board
-Version: 0.0.2-alpha1
+Version: 0.0.3-alpha1
 Maintainer: Thomas Castleman <contact@draugeros.org>
 Architecture: all
 Priority: optional
-Depends: python-psutil (>=5.4.2-1), python-pygame (>=1.9.1release), python-gtk2 (>=2.24.0-5.1ubuntu2), python (>=2.7.15~rc1-1), python3 (>=3.6.7-1~18.04), bash (>=4.4.18-2ubuntu1.1)
+Depends: python3-psutil (>=5.4.2-1), python-pygame (>=1.9.1release), python-gtk2 (>=2.24.0-5.1ubuntu2), python (>=2.7.15~rc1-1), python3 (>=3.6.7-1~18.04), bash (>=4.4.18-2ubuntu1.1)
 Description: Keyboard interface for Xbox and PlayStation controllers
  game-board is designed to act something like an on-screen keyboard with a touch screen. However, instead of responding to touch or mouse input, it watches the direction the analog sticks are pointing and determines what letter should be put in based on their orientations. It provides visual feedback as to which character is currectly selected for input so the user can ensure that the right thing will be put in.

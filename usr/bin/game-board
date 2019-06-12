@@ -28,8 +28,7 @@ EXECUTE () {
 }
 
 #set version number
-VERSION="0.0.2-alpha1"
-/usr/bin/python3 /usr/share/game-board/engine/log.py 'NOTICE' 'game-board Launched' '/usr/bin/game-board'
+VERSION="0.0.3-alpha1"
 #work on what the user wants
 if [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
 	#print version number
@@ -41,11 +40,13 @@ elif [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
 	exit 0
 elif [ "$1" == "-I" ] || [ "$1" == "--Interface" ] || [ "$1" == "--interface" ]; then
 	#run the app, showing the GUI
+	/usr/bin/python3 /usr/share/game-board/engine/log.py 'NOTICE' 'game-board Launched' '/usr/bin/game-board'
 	EXECUTE
 elif [ "$1" == "--hidden" ]; then
 	#run the app in hidden mode
+	/usr/bin/python3 /usr/share/game-board/engine/log.py 'NOTICE' 'game-board Launched' '/usr/bin/game-board'
 	/usr/bin/python3 /usr/share/game-board/engine/game-pad/sleep_mode.py
 	exit 2
-elif [ "$1" == "-c" ] || [ "$1" == "--config"]; then
+elif [ "$1" == "-c" ] || [ "$1" == "--config" ]; then
 	/usr/bin/python3 /usr/share/game-board/ui/config.py
 fi

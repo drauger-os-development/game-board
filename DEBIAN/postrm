@@ -2,6 +2,6 @@
 set -e
 set -o pipefail
 if [ "$1" == "remove" ] || [ "$1" == "purge" ]; then
-	su "$(users)" -c '$HOME/.local/bin/pip uninstall -y pynput'
-	su "$(users)" -c '$HOME/.local/bin/pip uninstall -y inputs'
+	su "$(users)" -c '$HOME/.local/bin/pip3 uninstall -y pynput'
+	su "$(users)" -c '$HOME/.local/bin/pip3 uninstall -y inputs'
 fi
