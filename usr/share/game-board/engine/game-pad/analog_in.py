@@ -38,7 +38,10 @@ while True:
 	ry=None
 	z=0
 	while z < 2:
-		events=get_gamepad()
+		try:
+			events=get_gamepad()
+		except:
+			continue
 		for event in events:
 			if event.code == "SYN_REPORT":
 				continue
@@ -120,6 +123,14 @@ while True:
 		elif rx < 0 and ry > 0:
 			rangle=rangle+270
 	#check if degree is greater 337.5 and less than 22.5
+	try:
+		angle = float(angle)
+	except:
+		angle = -1
+	try:
+		rangle = float(angle)
+	except:
+		rangle = -1
 	if angle > 337.5 or angle < 22.5:
 		if rangle > 330 or rangle < 30:
 			print("h")

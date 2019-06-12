@@ -28,7 +28,7 @@ EXECUTE () {
 }
 
 #set version number
-VERSION="0.0.3-alpha1"
+VERSION="0.0.4-alpha1"
 #work on what the user wants
 if [ "$1" == "-v" ] || [ "$1" == "--version" ]; then
 	#print version number

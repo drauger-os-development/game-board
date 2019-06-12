@@ -41,6 +41,10 @@ try:
             if event.type == pygame.JOYBUTTONDOWN:
                 button = 0
                 while button <= 12:
+					try:
+						j.get_button(button)
+					except:
+						continue
 					if j.get_button(button):
 						if button == 0:
 							print(button)
@@ -98,7 +102,7 @@ try:
 							break
 						elif button == 7:
 							print(button)
-							PS3: RIGHT TRIGGER
+							#PS3: RIGHT TRIGGER
 							stdin = sys.stdin
 							stdin = stdin.split()
 							char = stdin[0]
@@ -117,8 +121,8 @@ try:
 								type_out(char)
 								break
 							else:
-							print(button)
-							break
+								print(button)
+								break
 						elif button == 8:
 							print(button)
 							#PS3: Select

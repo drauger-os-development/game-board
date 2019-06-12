@@ -43,6 +43,10 @@ try:
             if event.type == pygame.JOYBUTTONDOWN:
                 button = 0
                 while button <= 12:
+					try:
+						j.get_button(button)
+					except:
+						continue
 					if j.get_button(button):
 						if button == 0:
 							print(button)
