@@ -1,0 +1,26 @@
+{
+	"right": {
+				"slices": 6,
+				"de_color": [255, 5, 5],
+				"color": [5, 255, 5]
+			},
+	"left": {
+				"slices": 8,
+				"de_color": [5, 5, 255],
+				"color": [5, 255, 5]
+			},
+	"window": {
+				"size": "60%",
+				"background": [0, 0, 0]
+			},
+	"general": {
+				"rumble": {
+							"active": true,
+							"strength": 1,
+							"duration": 0.25
+						},
+				"auto-entry": false,
+				"layout": "en_us",
+				"layout_dir": "etc/game_pad/layouts/"
+			}
+}
